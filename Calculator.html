@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+        .container{
+            display: flex;
+            align-self: center;
+            border: 2px solid black;
+            width: 50vw;
+            height: 80vh;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: center;
+            background-color: bisque;
+        }
+        .heading{
+            display: flex;
+            font-family: "Raleway", system-ui;
+            letter-spacing: 2px;
+            justify-content: center;
+            font-size: 50px;
+            font-weight: 600;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .second{
+            background-color: azure;
+            /* justify-content: center; */
+            display: flex;
+            flex-wrap: wrap;
+            border: 2px solid black;
+            width: 80%;
+            height: 75%;
+            align-content: flex-start;
+        }
+        #num1,#num2{
+            width: 100%;
+            margin: 10px;
+            height: 40px;
+            border-radius: 8px;
+            border-color: darkgrey;
+            padding: 5px;
+            font-size: 20px;
+        }
+        .operator{
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .third{
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+            height: 60px;
+        }
+        .calc{
+            display: flex;
+            
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            height: 45px;
+            font-size: 20px;
+            font-weight: 400;
+            background-color: rgb(224, 224, 224);
+        }
+        .calc:hover{
+            background-color: orange;
+        }
+        .operator:hover{
+            background-color: rgb(61, 155, 255);
+        }
+        .r{
+            border: 2px solid black;
+            padding: 20px;
+            width: 100vw;
+            margin: 15px;
+            background-color: rgb(255, 221, 251);
+            font-size: 23px;
+            font-weight:600;
+            font-family: "Raleway", system-ui;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">Simple Calculator...</div>
+        <div class="second">
+            <input type="number" id="num1" placeholder="Enter first number">
+            <input type="number" id="num2" placeholder="Enter second number">
+            <div class="third">
+                <button class="operator" onclick="setOperator('+')">+</button>
+                <button class="operator" onclick="setOperator('-')">-</button>
+                <button class="operator" onclick="setOperator('+')">x</button>
+                <button class="operator" onclick="setOperator('+')">/</button>
+            </div>
+            <button class="calc" onclick="calculate(operator)">Calculate</button>
+            <div class="r">Result :  <span id="result"></span></div>
+        </div>
+    </div>
+    <script>
+        let operator;
+        function setOperator(op){
+            operator = op;
+        }
+        function calculate(operator){
+            let num1 = parseInt(document.getElementById('num1').value);
+            let num2 = parseInt(document.getElementById('num2').value);
+            let result;
+            switch(operator){
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    result = num1 / num2;
+                    break;
+                default:
+                    result="Invalid Operator";
+            }
+            document.getElementById('result').textContent = result;
+        }
+        
+    </script>
+</body>
+</html>
